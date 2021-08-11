@@ -7,13 +7,19 @@ const cart = new Cart([]);
 
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
-
 function populateForm() {
+
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
-  for (let i in Product.allProducts) {
+  for (let i = 0 ;i<Product.allProducts.length;i++) {
+   
+let option = document.createElement('option')
+option.textContent= Product.allProducts[i],name;
+selectElement.appendChild(option);
+
 
   }
+
 }
 
 // When someone submits the form, we need to add the selected item to the cart
@@ -22,6 +28,7 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
+  event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
   cart.saveToLocalStorage();
@@ -33,21 +40,53 @@ function handleSubmit(event) {
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
+  let pickedItem = document.getElementById('items').value
   // TODO: get the quantity
+  let quantity = document.getElementsByTagName('quantity').value
   // TODO: using those, add one item to the Cart
+
+let pickedItemAndquantity = new CartItem (pickedItem,parseInt(quantity))
+
+cart.items.push(pickedItemAndquantity)
+
+
+
+
+
+
 }
 
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-
+let counter = 0 ;
 
 function updateCounter() {
+let item = document.getElementsByTagName('itemCount')
+let quantity = document.getElementsByTagName('quantity').value
+
+counter += parseInt(quantity)
+item.textContent = counter
+
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
+
+ 
   // TODO: Get the item and quantity from the form
+   let item = document.getElementsByTagName('items').value
+   let quantity = document.getElementsByTagName('quantity').value
   // TODO: Add a new element to the cartContents div with that information
+
+let content = document.getElementsByTagName('cartContents')
+let element = document.createElement('p')
+element.textContent = "item :" + item + " , quantity : " + quantity
+content.append(element)
+
+
+
+
+
 
 }
 
