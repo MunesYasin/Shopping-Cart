@@ -80,7 +80,7 @@ function updateCartPreview() {
 
 let content = document.getElementsByTagName('cartContents')
 let element = document.createElement('p')
-element.textContent = "item :" + item + " , quantity : " + quantity
+element.textContent = "item :" + item + " , quantity : " + quantity;
 content.append(element)
 
 
