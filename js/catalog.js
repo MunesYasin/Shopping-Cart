@@ -78,10 +78,10 @@ function updateCartPreview() {
    let quantity = document.getElementsByTagName('quantity').value
   // TODO: Add a new element to the cartContents div with that information
 
-let content = document.getElementsByTagName('cartContents')
-let element = document.createElement('p')
+let contentw = document.getElementById('cartContents')
+let element = document.createElement('p');
 element.textContent = "item :" + item + " , quantity : " + quantity;
-content.append(element)
+contentw.appendChild(element);
 
 
 
